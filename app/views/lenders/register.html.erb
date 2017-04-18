@@ -1,0 +1,37 @@
+<form action="/borrowers" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="borrower[first_name]">First Name:</label>
+  <input type="text" name="borrower[first_name]">
+  <label for="borrower[last_name]">Last Name:</label>
+  <input type="text" name="borrower[last_name]">
+  <label for="borrower[email]">Email:</label>
+  <input type="text" name="borrower[email]">
+  <label for="borrower[password]">Password:</label>
+  <input type="text" name="borrower[password]">
+  <label for="borrower[reason]">Need Money for:</label>
+  <input type="text" name="borrower[reason]">
+  <label for="borrower[discription]">Description:</label>
+  <textarea name="borrower[discription]" rows="8" cols="80"></textarea>
+  <label for="borrower[amount]">Amount Needed:</label>
+  <input type="number" name="borrower[amount]">
+  <input type="submit" name="" value="Register">
+</form>
+
+<a href="/login">Already a member?</a>
+
+<form action="/lenders" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="lender[first_name]">First Name:</label>
+  <input type="text" name="lender[first_name]">
+  <label for="lender[last_name]">Last Name:</label>
+  <input type="text" name="lender[last_name]">
+  <label for="lender[email]">Email:</label>
+  <input type="text" name="lender[email]">
+  <label for="lender[password]">Password:</label>
+  <input type="text" name="lender[password]">
+  <label for="lender[money]">Money:</label>
+  <input type="number" name="lender[money]">
+  <input type="submit" name="" value="Register">
+</form>
+
+<a href="/login">Already a member?</a>

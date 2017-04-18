@@ -1,0 +1,51 @@
+<h3>Name: <%= @lender.full_name %></h3>
+<p>Account balance: <%= @lender.amount_left %></p>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Money Needed For</th>
+    <th>Description</th>
+    <th>Amount Needed</th>
+    <th>Amount Raised</th>
+    <th>Actions</th>
+  </thead>
+  <% @needy_borrowers.each do |borrower| %>
+    <% if borrower.amount_left > 0 %>
+      <tr>
+        <td><%= borrower.full_name %></td>
+        <td><%= borrower.reason %></td>
+        <td><%= borrower.discription %></td>
+        <td><%= borrower.amount %></td>
+        <td><%= borrower.money_collected %></td>
+        <td><form action="/lenders/<%= @lender.id %>/lend" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="agreement[borrower_id]" value="<%= borrower.id %>">
+          <input type="number" style="display=inline;" name="agreement[amount]" value="0">
+          <input type="Submit" name="" value="Lend">
+        </form></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Money Needed For</th>
+    <th>Description</th>
+    <th>Amount Needed</th>
+    <th>Amount Raised</th>
+    <th>Amount Lent</th>
+  </thead>
+  <% @my_borrowers.each do |borrower| %>
+    <tr>
+      <td><%= borrower.full_name %></td>
+      <td><%= borrower.reason %></td>
+      <td><%= borrower.discription %></td>
+      <td><%= borrower.amount %></td>
+      <td><%= borrower.amount_recieved %></td>
+      <td><%= @lender.agreements.where(borrower: borrower).sum(:amount) %></td>
+    </tr>
+  <% end %>
+</table>

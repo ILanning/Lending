@@ -1,0 +1,20 @@
+<h1>Borrowers#show</h1>
+<p>Find me in app/views/borrowers/show.html.erb</p>
+<h3>Name: <%= @borrower.full_name %></h3>
+<h3>Amount Needed: <%= @borrower.amount %></h3>
+<h3>Amount Raised: <%= @borrower.amount_recieved %></h3>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Amount Lent</th>
+  </thead>
+  <% @my_lenders.each do |lender| %>
+    <tr>
+      <td><%= lender.full_name %></td>
+      <td><%= lender.email %></td>
+      <td><%= @borrower.agreements.where(lender: lender).sum(:amount) %></td>
+    </tr>
+  <% end %>
+</table>

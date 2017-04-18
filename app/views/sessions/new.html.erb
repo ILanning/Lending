@@ -1,0 +1,13 @@
+<h1>Sessions#new</h1>
+<p>Log In</p>
+
+<form action="/sessions/create" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="user[email]">Email:</label>
+  <input type="text" name="user[email]">
+  <label for="user[password]">Password:</label>
+  <input type="text" name="user[password]">
+  <input type="submit" name="" value="Log In">
+</form>
+
+<a href="/register">Click here to register</a>
